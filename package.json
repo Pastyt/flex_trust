@@ -1,0 +1,27 @@
+{
+  "name": "flex_trust",
+  "version": "1.0.0",
+  "description": "Blockchain-based PKI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pastyt/flex_trust.git"
+  },
+  "keywords": [
+    "blockchain",
+    "PKI",
+    "ethereum"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pastyt/flex_trust/issues"
+  },
+  "homepage": "https://github.com/Pastyt/flex_trust#readme",
+  "dependencies": {
+    "solc": "^0.8.4"
+  }
+}

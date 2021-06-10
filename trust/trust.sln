@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31321.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "flex trust", "flex trust\flex trust.pyproj", "{AF5C6160-25B6-4DA4-BC2C-F5A7B9DF7DE4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF5C6160-25B6-4DA4-BC2C-F5A7B9DF7DE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF5C6160-25B6-4DA4-BC2C-F5A7B9DF7DE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A9E8D938-E16E-4D98-B909-36FAE0C713CF}
+	EndGlobalSection
+EndGlobal
