@@ -3,32 +3,43 @@
 import json
 import os
 
-from web3 import Web3
+#default ports or IPC file locations,
+from web3.auto import w3
+#Because of PoA
+from web3.middleware import geth_poa_middleware
+
+from userdata import getContract
+
 import ipfshttpclient
+#self.w3.geth.personal.unlock_account( self.w3.eth.defaultAccount,'1', 15000)
+#from trustery.utils_py3 import encode_hex
+# Initialise IPFS interface. 
+CONTRACT_ABI = open("C://Users/pavlo/ethereum/flex_trust/contract/_contract_sol_Trustery.abi").read()
 
-# Initialise IPFS interface.
-class myapi(object):
-    def __init__(self):
-        self.w3 = Web3(Web3.HTTPProvider('http://127.0.0.1:8545'))
-        self.w3.eth.defaultAccount = self.w3.eth.accounts[0]
-        self.w3.geth.personal.unlock_account( self.w3.eth.defaultAccount,'1', 15000)
-        try:
-            self.ipfsclient = ipfshttpclient.connect('/ip4/127.0.0.1/tcp/8080')
-        except:
-            self.ipfsclient = 0
-    #from trustery.utils_py3 import encode_hex
-    #from trustery.utils_py3 import decode_hex
-    def gethisconnected(self):
-        if self.w3.isConnected():
-            return True
-        else: 
-            return False
+try:
+    ipfsclient = ipfshttpclient.connect('/ip4/127.0.0.1/tcp/5001')
+except:
+    ipfsclient = 0
+if w3.isConnected():
+    w3.eth.defaultAccount = w3.eth.accounts[0]
+    w3.middleware_onion.inject(geth_poa_middleware, layer=0)
+    w3.geth.personal.unlock_account(w3.eth.defaultAccount, '1')
+myContract = w3.eth.contract(address=getContract(), abi=CONTRACT_ABI)
+#Because of PoA
 
-    def ipfsisconnected(self):
-        if self.ipfsclient == 0:
-            return False
-        else:
-            return True
+
+
+def gethisconnected():
+    if w3.isConnected():
+        return True
+    else: 
+        return False
+
+def ipfsisconnected():
+    if ipfsclient == 0:
+        return False
+    else:
+        return True
     #from trustery.testcontract import w3,myContract
     # Trustery contract constants.
     # TRUST_DEFAULT_ADDRESS = ''

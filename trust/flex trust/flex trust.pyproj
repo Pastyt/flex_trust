@@ -11,7 +11,8 @@
     <OutputPath>.</OutputPath>
     <Name>flex trust</Name>
     <RootNamespace>flex trust</RootNamespace>
-    <IsWindowsApplication>False</IsWindowsApplication>
+    <IsWindowsApplication>True</IsWindowsApplication>
+    <InterpreterId>Global|PythonCore|3.8</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,10 +24,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="api.py" />
+    <Compile Include="contract.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="events.py" />
     <Compile Include="flex_trust.py" />
     <Compile Include="gui.py" />
+    <Compile Include="managedb.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="userdata.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="transactions.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|PythonCore|3.8" />
+    <InterpreterReference Include="Global|VisualStudio|Python38" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
