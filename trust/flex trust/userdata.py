@@ -16,15 +16,27 @@ def newContract(address):
     with open('config.ini', 'w') as configfile:
         config.write(configfile)
 
+def getBlock():
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+    return int(config['BLOCK']['block'])
+
+def rememberBlock(block):
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+    config['BLOCK'] = {'block': block}
+    with open('config.ini', 'w') as configfile:
+        config.write(configfile)
+
 def getNewCertID():
     config = configparser.ConfigParser()
     config.read('config.ini')
     try:
-        a = config['CONTRACT']['certid']
+        a = config['CRT']['certid']
     except:
-        config['CONTRACT']['certid'] = 0
-        a = config['CONTRACT']['certid']
-    config['CONTRACT']['certid']+=1
+        config['CRT']['certid'] = 0
+        a = config['CRT']['certid']
+    config['CRT']['certid']+=1
     with open('config.ini', 'w') as configfile:
         config.write(configfile)
     return a

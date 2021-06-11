@@ -9,7 +9,6 @@ def send_cert(path,identifier,):
     ipfs_data = ipfsclient.add(path)
     # {'Hash': 'QmWxS5aNTFEc9XbMX1ASvLET1zrqEaTssqt33rVZQCQb22', 'Name': 'test.txt'}
     ipfs_data = 'ipfs-block://' + ipfs_data['Hash']
-    myContract.functions.addAttribute( 'CRT', False, 
-        identifier.encode('utf-8'), ipfs_data , '' ).transact()
+    myContract.functions.sendCertificate(identifier.encode('utf-8'), ipfs_data , 500 ).transact()
     # Add the attribute.
     

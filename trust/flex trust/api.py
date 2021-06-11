@@ -14,7 +14,7 @@ import ipfshttpclient
 #self.w3.geth.personal.unlock_account( self.w3.eth.defaultAccount,'1', 15000)
 #from trustery.utils_py3 import encode_hex
 # Initialise IPFS interface. 
-CONTRACT_ABI = open("C://Users/pavlo/ethereum/flex_trust/contract/_contract_sol_Trustery.abi").read()
+CONTRACT_ABI = open("C://Users/pavlo/ethereum/flex_trust/contract/__contract_sol_Flex.abi").read()
 
 try:
     ipfsclient = ipfshttpclient.connect('/ip4/127.0.0.1/tcp/5001')
@@ -24,7 +24,11 @@ if w3.isConnected():
     w3.eth.defaultAccount = w3.eth.accounts[0]
     w3.middleware_onion.inject(geth_poa_middleware, layer=0)
     w3.geth.personal.unlock_account(w3.eth.defaultAccount, '1')
-myContract = w3.eth.contract(address=getContract(), abi=CONTRACT_ABI)
+#If getContract return 0
+try:
+    myContract = w3.eth.contract(address=getContract(), abi=CONTRACT_ABI)
+except:
+    myContract = 0
 #Because of PoA
 
 
