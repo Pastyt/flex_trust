@@ -22,7 +22,7 @@ contract Flex {
     }
     
     function revokeCertificate(uint certID) public returns (uint) {
-        require(certificate>=certID);
+        require(certificate>certID);
         emit RevokedCertificate(certID);
         return certID;
     }
