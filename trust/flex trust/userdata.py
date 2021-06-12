@@ -31,12 +31,16 @@ def rememberBlock(block):
 def getNewCertID():
     config = configparser.ConfigParser()
     config.read('config.ini')
-    try:
-        a = config['CRT']['certid']
-    except:
-        config['CRT']['certid'] = 0
-        a = config['CRT']['certid']
-    config['CRT']['certid']+=1
+    a = config['CRT']['certid']
+    config['CRT']['certid'] = str(int(config['CRT']['certid']) + 1)
+
     with open('config.ini', 'w') as configfile:
         config.write(configfile)
-    return a
+    return int(a)
+
+def setCertIDtoZero():
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+    config['CRT'] = {'certid': 1}
+    with open('config.ini', 'w') as configfile:
+        config.write(configfile)
