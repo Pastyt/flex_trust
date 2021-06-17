@@ -14,7 +14,7 @@ import ipfshttpclient
 #self.w3.geth.personal.unlock_account( self.w3.eth.defaultAccount,'1', 15000)
 #from trustery.utils_py3 import encode_hex
 # Initialise IPFS interface. 
-CONTRACT_ABI = open("C://Users/pavlo/ethereum/flex_trust/contract/__contract_sol_Flex.abi").read()
+CONTRACT_ABI = open("C://Users/pavlo/ethereum/flex_trust/contract/contract_sol_Flex.abi").read()
 
 try:
     ipfsclient = ipfshttpclient.connect('/ip4/127.0.0.1/tcp/5001')

@@ -5,11 +5,16 @@ from userdata import getBlock
 import time
 
 def showCert():
+    t1 = open('C:/Users/pavlo/ethereum/show_only_geth.txt', 'a')
+
     filterSended = myContract.events.SendedCertificate.createFilter(fromBlock=getBlock())
     filterRevoked = myContract.events.RevokedCertificate.createFilter(fromBlock=getBlock())
 
+    start = time.time()
     getlogsSended = w3.eth.get_filter_logs(filterSended.filter_id)
     getlogsRevoked = w3.eth.get_filter_logs(filterRevoked.filter_id)
+    start =str(time.time()-start)
+    t1.write(start + '\n')
 
     logsSended = []
     logsRevoked = []

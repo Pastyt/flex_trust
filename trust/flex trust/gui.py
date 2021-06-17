@@ -126,6 +126,43 @@ def sendRevoke():
     lb_mainframe_text.pack()
     transactions.revoke_sign(revoke)
 
+def test():
+    revf = open('C:/Users/pavlo/ethereum/revoke.txt', 'w')
+    for i in range(50):
+        start = time.time()
+        transactions.revoke_test()
+        print(str(i))
+        start = str(time.time()-start)
+        revf.write(start + '\n')
+
+def test_send():
+    test = open('C:/Users/pavlo/ethereum/send.txt', 'w')
+    for i in range(50):
+        start = time.time()
+        print(str(i) +'\n')
+        transactions.send_cert_test()
+        start = str(time.time()-start)
+        test.write(start + '\n')
+
+def test_cert_get():
+    test = open('C:/Users/pavlo/ethereum/show.txt', 'w')
+    t = open('C:/Users/pavlo/ethereum/show_only_geth.txt', 'w')
+    t.close()
+
+    for i in range(50):
+        start = time.time()
+        events.showCert()
+        start = str(time.time()-start)
+        test.write(start + '\n')
+
+def test_pack_send():
+    test = open('C:/Users/pavlo/ethereum/sendpack.txt', 'w')
+    for i in range(10):
+        start = time.time()
+        print(str(i) +'\n')
+        transactions.send_cert_test_pack()
+        start = str(time.time()-start)
+        test.write(start + '\n')
 
 root.title('Flex Trust')
 #root.geometry('500x400')
@@ -147,7 +184,9 @@ btn_sign_CSR = Button(frame_second,text="Sign CSR cert", command=signCSR)
 btn_send_CRT = Button(frame_second,text="Send CRT to blockchain", command=send_CRT)
 btn_show_CRT = Button(frame_second,text="Show CRT in blockchain", command=show_Cert)
 btn_revoke_CRT = Button(frame_second,text="Revoke CRT", command=revokeCRT)
-
+btn_test = Button(frame_second,text="Test Revoke", command=test)
+btn_show = Button(frame_second,text="Test Show", command=test_cert_get)
+btn_test_send = Button(frame_second,text="Test Send", command=test_pack_send)
 
 frame_main.grid(column= 0,row=0)
 frame_second.grid(column= 1,row=0)
@@ -164,6 +203,10 @@ btn_create_CSR.pack()
 btn_sign_CSR.pack()
 btn_send_CRT.pack()
 btn_revoke_CRT.pack()
+btn_test.pack()
+btn_show.pack()
+btn_test_send.pack()
+
 if api.gethisconnected():
     lb_geth_text.config(fg="green")
 if api.ipfsisconnected():

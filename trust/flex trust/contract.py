@@ -11,7 +11,7 @@ from api import myContract
 def deploy_contract():
     #Need to compile before start
     #TODO Change to os.path
-    bytecode =  open("C://Users/pavlo/ethereum/flex_trust/contract/__contract_sol_Flex.bin")
+    bytecode =  open("C://Users/pavlo/ethereum/flex_trust/contract/contract_sol_Flex.bin")
     MyContract = w3.eth.contract(abi=CONTRACT_ABI, bytecode=bytecode.read())
     
 
